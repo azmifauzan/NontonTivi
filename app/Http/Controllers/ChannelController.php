@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use App\Channel;
 
 class ChannelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('authadmin');
+        View::share('title','Channels');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,8 @@ class ChannelController extends Controller
      */
     public function index()
     {
-        return "channel index";
+        $channel = Channel::orderBy('name')->paginate(15);
+        return view('admin.channel',['channels'=>$channel]);
     }
 
     /**
@@ -23,7 +32,7 @@ class ChannelController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -56,7 +65,7 @@ class ChannelController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "edit channel";
     }
 
     /**
@@ -79,6 +88,6 @@ class ChannelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "destroy channel";
     }
 }
