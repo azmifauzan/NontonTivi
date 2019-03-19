@@ -17,8 +17,8 @@ class CreateChannelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
-            $table->string('logo');
-            $table->string('website');
+            $table->string('logo')->nullable();
+            $table->string('website')->nullable();
             $table->timestamps();
         });
     }

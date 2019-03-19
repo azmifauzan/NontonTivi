@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Channel;
 
@@ -43,18 +44,34 @@ class ChannelController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'website' => 'nullable|url',
+            'logo' => 'image|max:2000',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+
+        if($request->hasFile('logo')){
+            $uploadedFile = $request->file('logo');        
+            $path = $uploadedFile->move('logo',md5(date('Y-m-d H:i:s')).".".$request->file('logo')->getClientOriginalExtension());
+            Channel::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'website' => $request->website,
+                'logo' => $path
+            ]);
+        }
+        else{
+            Channel::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'website' => $request->website,
+            ]);
+        }
+
+        $request->session()->flash('success', "Channel successfully saved in the database!");
+        return redirect()->route('channel.index');
     }
 
     /**
@@ -65,7 +82,8 @@ class ChannelController extends Controller
      */
     public function edit($id)
     {
-        return "edit channel";
+        $channel = Channel::find($id);
+        return view('admin.edit',['channel' => $channel]);
     }
 
     /**

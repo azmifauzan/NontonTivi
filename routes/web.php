@@ -16,5 +16,5 @@ Route::prefix('admin')->group(function () {
 	Route::get('home', "Admin\HomeController@index")->name('dashboard');
 	Route::get('logout',"Admin\LoginController@out")->name('logoutadmin');
 	Route::post('login', "Admin\LoginController@ceklogin");
-	Route::resource('channel', 'ChannelController');
+	Route::resource('channel', 'Admin\ChannelController')->except(['show']);
 });

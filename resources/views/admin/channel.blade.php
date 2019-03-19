@@ -2,6 +2,15 @@
 
 @section('konten')
 
+@if (session('success'))
+  <div class="alert alert-info alert-dismissible fade show">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    	<span aria-hidden="true">&times;</span>
+  	</button>
+  </div>
+@endif
+
 <table class="table table-striped">
 <thead>
     <tr>
