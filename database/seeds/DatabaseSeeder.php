@@ -51,5 +51,23 @@ class DatabaseSeeder extends Seeder
             'website' => "http://www.netmedia.co.id",
             'created_at' => date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('actors')->insert([
+            'name' => 'Baim Wong',
+            'biodata' => 'Pria yang bernama asli Muhammad Ibrahim dan bertinggi 176 cm ini adalah anak bungsu dari 5 bersaudara dari pasangan pengusaha Johnny Wong dan Kartini Marta Atmadja. Pada 21 Juli 2018 Baim Wong bertunangan dengan Paula Verhoeven lalu menikah dengannya pada 22 November 2018. ',
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('actors')->insert([
+            'name' => 'Kirana Larasati',
+            'biodata' => 'Kirana Larasati (lahir di Jakarta, 29 Agustus 1987; umur 31 tahun) adalah aktris Indonesia. Kirana Larasati mulai populer setelah membintangi sinetron Azizah yang ditayangkan SCTV. Ia menjadi Duta Artis Pemberantas Narkoba sejak tahun 2012.',
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('actors')->insert([
+            'name' => 'Raffi Ahmad',
+            'biodata' => 'Anak sulung dari 3 bersaudara pasangan Munawar Ahmad (alm) dan Amy Qanita ini mengawali kariernya sebagai aktor. Hingga saat ini, Raffi telah terlibat di sejumlah sinetron, FTV dan film layar lebar. Selain menjadi aktor, Raffi mengembangkan kariernya menjadi bintang iklan, presenter dan penyanyi.',
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }

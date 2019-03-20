@@ -33,7 +33,7 @@ class ChannelController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.createchannel');
     }
 
     /**
@@ -70,8 +70,7 @@ class ChannelController extends Controller
             ]);
         }
 
-        $request->session()->flash('success', "Channel successfully saved in the database!");
-        return redirect()->route('channel.index');
+        return redirect()->route('channel.index')->with('success','Channel successfully saved in the database!');
     }
 
     /**
@@ -83,7 +82,7 @@ class ChannelController extends Controller
     public function edit($id)
     {
         $channel = Channel::find($id);
-        return view('admin.edit',['channel' => $channel]);
+        return view('admin.editchannel',['channel' => $channel]);
     }
 
     /**
@@ -95,7 +94,32 @@ class ChannelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'website' => 'nullable|url',
+            'logo' => 'image|max:2000',
+        ]);
+
+        if($request->hasFile('logo')){
+            $uploadedFile = $request->file('logo');        
+            $path = $uploadedFile->move('logo',md5(date('Y-m-d H:i:s')).".".$request->file('logo')->getClientOriginalExtension());
+            Channel::find($id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'website' => $request->website,
+                'logo' => $path
+            ]);
+        }
+        else{
+            Channel::find($id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'website' => $request->website,
+            ]);
+        }
+
+        return redirect()->route('channel.index')->with('success','Channel successfully update!');
     }
 
     /**
@@ -106,6 +130,7 @@ class ChannelController extends Controller
      */
     public function destroy($id)
     {
-        return "destroy channel";
+        Channel::destroy($id);
+        return redirect()->route('channel.index')->with('success','Channel successfully delete!');
     }
 }

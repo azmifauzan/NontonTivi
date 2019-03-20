@@ -8,15 +8,21 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link @if($title == 'Actors') active @endif" href="{{ route('actor.index') }}">
+          <span data-feather="users"></span>
+          Actors @if($title == "Actors")<span class="sr-only">(current)</span>@endif
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link @if($title == 'Channels') active @endif" href="{{ route('channel.index') }}">
           <span data-feather="file"></span>
           Channels @if($title == "Channels")<span class="sr-only">(current)</span>@endif
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="shopping-cart"></span>
-          Products
+        <a class="nav-link @if($title == 'Programs') active @endif" href="{{ route('program.index') }}">
+          <span data-feather="tv"></span>
+          Pograms @if($title == "Programs")<span class="sr-only">(current)</span>@endif
         </a>
       </li>
       <li class="nav-item">

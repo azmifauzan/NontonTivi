@@ -23,12 +23,12 @@
   	<div class="form-group">
     	<label for="logo">Logo</label>
     	@if($channel->logo != "")
-	  	<br/><div class="mw-100"><img src="{{ url($channel->logo) }}" alt="{{ $channel->name }}" class="img-thumbnail mw-25"></div><br/>
+	  	<br/><div class="mw-25"><img src="{{ url($channel->logo) }}" alt="{{ $channel->name }}" class="img-thumbnail mw-25"></div><br/>
 	  	@endif
     	<input type="file" class="form-control-file" id="logo" name="logo">
     	<div class="invalid-feedback">{{ $errors->first('logo') }}</div>
   	</div>
-  	<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+  	<button type="submit" name="submit" class="btn btn-primary">Update</button><br/><br/>
 </form>
 
 @endsection

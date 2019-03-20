@@ -24,7 +24,7 @@
     	<input type="file" class="form-control-file" id="logo" name="logo">
     	<div class="invalid-feedback">{{ $errors->first('logo') }}</div>
   	</div>
-  	<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+  	<button type="submit" name="submit" class="btn btn-primary">Submit</button><br/><br/>
 </form>
 
 @endsection
