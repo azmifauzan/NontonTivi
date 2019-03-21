@@ -20,29 +20,23 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link @if($title == 'Production Houses') active @endif" href="{{ route('ph.index') }}">
+          <span data-feather="film"></span>
+          Production Houses @if($title == "Production Houses")<span class="sr-only">(current)</span>@endif
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link @if($title == 'Programs') active @endif" href="{{ route('program.index') }}">
           <span data-feather="tv"></span>
-          Pograms @if($title == "Programs")<span class="sr-only">(current)</span>@endif
+          Programs @if($title == "Programs")<span class="sr-only">(current)</span>@endif
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="users"></span>
-          Customers
+          Users
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="bar-chart-2"></span>
-          Reports
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="layers"></span>
-          Integrations
-        </a>
-      </li>
+      </li>      
     </ul>        
   </div>
 </nav>

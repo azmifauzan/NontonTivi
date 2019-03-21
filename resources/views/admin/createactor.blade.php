@@ -12,12 +12,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="birth_place">Birth Place</label>
-      <input type="text" class="form-control {{ !$errors->has('birth_place') ?: 'is-invalid' }}" name="birth_place" placeholder="Birth place" required="true" autofocus="true" value="{{ old('birth_place') }}">
+      <input type="text" class="form-control {{ !$errors->has('birth_place') ?: 'is-invalid' }}" name="birth_place" placeholder="Birth place" value="{{ old('birth_place') }}">
       <div class="invalid-feedback">{{ $errors->first('birth_place') }}</div>
     </div>
     <div class="form-group col-md-6">
       <label for="birth_date">Birth Date</label>
-      <input type="text" class="form-control {{ !$errors->has('birth_date') ?: 'is-invalid' }}" name="birth_date" placeholder="Birth date" required="true" autofocus="true" value="{{ old('birth_date') }}">
+      <input type="text" class="form-control {{ !$errors->has('birth_date') ?: 'is-invalid' }}" name="birth_date" placeholder="Birth date"  value="{{ old('birth_date') }}">
       <div class="invalid-feedback">{{ $errors->first('birth_date') }}</div>
     </div>
   </div>

@@ -4,7 +4,7 @@
 
 <form method="post" action="{{ route('channel.update',$channel->id) }}" class="form" enctype="multipart/form-data">
 	@method('PUT')
-    @csrf
+  @csrf
 	<div class="form-group">
     	<label for="name">Name</label>
     	<input type="text" class="form-control {{ !$errors->has('name') ?: 'is-invalid' }}" name="name" placeholder="Channel name" required="true" autofocus="true" value="{{ $channel->name }}">

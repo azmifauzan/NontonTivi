@@ -18,5 +18,6 @@ Route::prefix('admin')->group(function () {
 	Route::post('login', "Admin\LoginController@ceklogin");
 	Route::resource('actor', 'Admin\ActorController')->except(['show']);
 	Route::resource('channel', 'Admin\ChannelController')->except(['show']);
+	Route::resource('ph', 'Admin\ProductionhouseController')->except(['show']);
 	Route::resource('program', 'Admin\ProgramController');
 });

@@ -69,5 +69,28 @@ class DatabaseSeeder extends Seeder
             'biodata' => 'Anak sulung dari 3 bersaudara pasangan Munawar Ahmad (alm) dan Amy Qanita ini mengawali kariernya sebagai aktor. Hingga saat ini, Raffi telah terlibat di sejumlah sinetron, FTV dan film layar lebar. Selain menjadi aktor, Raffi mengembangkan kariernya menjadi bintang iklan, presenter dan penyanyi.',
             'created_at' => date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('productionhouses')->insert([
+            'name' => 'Tripar MVP',
+            'description' => "Tripar Multivision Plus (sekarang dikenal sebagai MVP Indonesia) adalah perusahaan perfilman didirikan oleh Raam Punjabi. Raam mendirikan MVP pada 18 April 1988 di Jakarta dengan modal 250 juta Rupiah. Produksi pertama MVP adalah serial sinetron komedi Gara-Gara yang diproduksi pada tahun 1991. MVP berdiri sebagai antisipasi perkembangan industri pertelevisian di Indonesia. Hadirnya televisi swasta RCTI menjadi pemikiran MVP untuk menjadi rumah produksi pelopor yang mendukung perkembangan siaran televisi swasta dengan program-programnya.",
+            'website' => "http://www.mvpindonesia.com/",
+            'address' => "Jakarta, Indonesia",
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('productionhouses')->insert([
+            'name' => 'MD Entertainment',
+            'description' => "Multi Dimensia Entertainment (atau MD Entertainment; IDX: FILM) adalah sebuah rumah produksi di Indonesia. Multi Dimensia Entertainment didirikan oleh Dhamoo Punjabi yang merupakan adik dari Raam Punjabi bersama putranya Manoj Punjabi.[butuh rujukan] Dhamoo dan Manoj mendirikannya setelah hengkang dari Multivision Plus (sekarang lebih dikenal sebagai MVP Entertainment Indonesia) pada 7 Desember 2002",
+            'address' => "Jakarta, Indonesia",
+            'website' => "http://www.mdentertainment.co/",
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('productionhouses')->insert([
+            'name' => 'Indika Entertainment',
+            'description' => "Indika Entertainment merupakan sebuah rumah produksi sinetron dan film di Indonesia. Indika Entertainment didirikan pada tahun 1996 di Jakarta. Indika Entertainment dikenal dengan beberapa sinetronnya yang diadaptasi dari novel karangan Mira W. seperti Cinta dan Cinta Dara Kembar. Saat ini Indika Entertainment menghasilkan pemeran-pemeran di film utamanya seperti Sheila Marcia, Andhika Gumilang, Kamidia Radisti, Julia Perez, dan masih banyak lagi.",
+            'address' => "Graha Mitra Lantai 9, Jl. Jendral Gatot Subroto Kav. 21, Jakarta Selatan 12930",
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }

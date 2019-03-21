@@ -77,17 +77,6 @@ class ActorController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -95,7 +84,8 @@ class ActorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $actor = Actor::find($id);
+        return view('admin.editactor',['actor'=>$actor]);
     }
 
     /**
@@ -107,7 +97,36 @@ class ActorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'biodata' => 'required',
+            'website' => 'nullable|url',
+            'foto' => 'image|max:2000',
+        ]);
+
+        if($request->hasFile('foto')){
+            $uploadedFile = $request->file('foto');        
+            $path = $uploadedFile->move('foto',md5(date('Y-m-d H:i:s')).".".$request->file('foto')->getClientOriginalExtension());
+            Actor::find($id)->update([
+                'name' => $request->name,
+                'birth_place' => $request->birth_place,
+                'birth_date' => $request->birth_date,
+                'biodata' => $request->biodata,
+                'website' => $request->website,
+                'foto' => $path
+            ]);
+        }
+        else{
+             Actor::find($id)->update([
+                'name' => $request->name,
+                'birth_place' => $request->birth_place,
+                'birth_date' => $request->birth_date,
+                'biodata' => $request->biodata,
+                'website' => $request->website,
+            ]);
+        }
+
+        return redirect()->route('actor.index')->with('success','Actor successfully update!');
     }
 
     /**
@@ -118,6 +137,7 @@ class ActorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Actor::destroy($id);
+        return redirect()->route('actor.index')->with('success','Actor successfully delete!');
     }
 }
