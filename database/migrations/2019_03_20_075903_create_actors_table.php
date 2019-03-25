@@ -18,7 +18,7 @@ class CreateActorsTable extends Migration
             $table->string('name');
             $table->string('birth_place')->nullable();
             $table->string('birth_date',50)->nullable();
-            $table->text('biodata');
+            $table->text('biodata')->nullable();
             $table->string('foto')->nullable();
             $table->string('website')->nullable();
             $table->timestamps();

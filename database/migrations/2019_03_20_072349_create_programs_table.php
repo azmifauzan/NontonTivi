@@ -18,7 +18,7 @@ class CreateProgramsTable extends Migration
             $table->bigInteger('productionhouse_id');
             $table->string('name');
             $table->text('description');
-            $table->year('year');
+            $table->string('production_year',4);
             $table->string('website')->nullable();
             $table->timestamps();
         });

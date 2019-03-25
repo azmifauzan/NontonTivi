@@ -46,7 +46,6 @@ class ActorController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'biodata' => 'required',
             'website' => 'nullable|url',
             'foto' => 'image|max:2000',
         ]);
@@ -99,7 +98,6 @@ class ActorController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'biodata' => 'required',
             'website' => 'nullable|url',
             'foto' => 'image|max:2000',
         ]);

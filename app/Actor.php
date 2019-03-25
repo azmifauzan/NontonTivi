@@ -10,6 +10,6 @@ class Actor extends Model
 
     public function program()
     {
-    	return $this->belongsToMany('App\Actor');
+    	return $this->belongsToMany(App\Program::class);
     }
 }

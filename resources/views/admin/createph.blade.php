@@ -2,7 +2,7 @@
 
 @section('konten')
 
-<form method="post" action="{{ route('ph.store') }}" class="form" enctype="multipart/form-data">
+<form method="post" action="{{ route('ph.store') }}" class="form">
 	{{ csrf_field() }}
 	<div class="form-group">
   	<label for="name">Name</label>

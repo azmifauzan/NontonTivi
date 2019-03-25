@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
-    protected $fillable = ['name','description','year','website'];
+    protected $fillable = ['name','description','website','productionhouse_id','production_year'];
 
     public function actor()
     {
-    	return $this->belongsToMany('App\Program');
+    	return $this->belongsToMany(\App\Actor::class);
     }
 }

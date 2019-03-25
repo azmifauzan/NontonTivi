@@ -33,7 +33,9 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        $actors = \App\Actor::orderBy('name')->get();
+        $phs = \App\Productionhouse::orderBy('name')->get();
+        return view('admin.createprogram',['phs'=>$phs,'actors'=>$actors]);
     }
 
     /**
@@ -44,7 +46,46 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'ph' => 'required',
+            'website' => 'nullable|url',
+            'year' => 'required|size:4'
+        ]);
+
+        $phdetail = \App\Productionhouse::where('name',$request->ph[0])->get()->first();
+        if(!$phdetail)
+        {
+            $ph = \App\Productionhouse::create(['name'=>$request->ph[0]]);
+            $phid = $ph->id;
+        }
+        else{
+            $phid = $phdetail->id;
+        }
+
+        $pid = Program::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'productionhouse_id' => $phid,
+            'production_year' => $request->year,
+            'website' => $request->website,
+        ]);
+
+        foreach ($request->actors as $actor) {
+            $act = \App\Actor::where('name',$actor)->get()->first();
+            if($act){
+                $aid[] = $act->id; 
+            }
+            else{
+                $actor = \App\Actor::create(['name' => $actor]);
+                $aid[] = $actor->id;
+            }
+        }
+
+        $pid->actor()->attach($aid);
+
+        return redirect()->route('program.index')->with('success','Program successfully saved in the database!');
     }
 
     /**
@@ -55,7 +96,10 @@ class ProgramController extends Controller
      */
     public function edit($id)
     {
-        //
+        $program = Program::with('actor')->find($id);
+        $actors = \App\Actor::orderBy('name')->get();
+        $phs = \App\Productionhouse::orderBy('name')->get();
+        return view('admin.editprogram',['program'=>$program,'actors'=>$actors,'phs'=>$phs]);
     }
 
     /**
@@ -67,7 +111,40 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'ph' => 'required',
+            'website' => 'nullable|url',
+            'year' => 'required|size:4'
+        ]);
+
+        $pid = Program::find($id);
+
+        $pid->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'productionhouse_id' => $request->ph[0],
+            'production_year' => $request->year,
+            'website' => $request->website,
+        ]);
+
+        $pid->actor()->detach();
+
+        foreach ($request->actors as $actor) {
+            $act = \App\Actor::where('name',$actor)->get()->first();
+            if($act){
+                $aid[] = $act->id; 
+            }
+            else{
+                $actor = \App\Actor::create(['name' => $actor]);
+                $aid[] = $actor->id;
+            }
+        }
+
+        $pid->actor()->attach($aid);
+
+        return redirect()->route('program.index')->with('success','Program successfully update!');
     }
 
     /**
@@ -78,6 +155,9 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prog = Program::find($id);
+        $prog->actor()->detach();
+        $prog->delete();
+        return redirect()->route('program.index')->with('success','Program successfully delete!');
     }
 }

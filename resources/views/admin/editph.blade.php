@@ -2,7 +2,7 @@
 
 @section('konten')
 
-<form method="post" action="{{ route('ph.update',$ph->id) }}" class="form" enctype="multipart/form-data">
+<form method="post" action="{{ route('ph.update',$ph->id) }}" class="form">
 	{{ csrf_field() }}
   @method('PUT')
 	<div class="form-group">

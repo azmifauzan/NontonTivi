@@ -17,7 +17,6 @@ class CreateActorProgramTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('actor_id');
             $table->bigInteger('program_id');
-            $table->timestamps();
         });
     }
 

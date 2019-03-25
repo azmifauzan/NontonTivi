@@ -46,7 +46,6 @@ class ProductionhouseController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required',
             'website' => 'nullable|url',
         ]);
 
@@ -83,7 +82,6 @@ class ProductionhouseController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required',
             'website' => 'nullable|url',
         ]);
 

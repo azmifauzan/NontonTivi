@@ -16,7 +16,7 @@ class CreateProductionhousesTable extends Migration
         Schema::create('productionhouses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('address')->nullable();
             $table->string('website')->nullable();
             $table->timestamps();
