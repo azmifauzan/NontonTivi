@@ -119,12 +119,18 @@ class ProgramController extends Controller
             'year' => 'required|size:4'
         ]);
 
+        $phid = $request->ph[0];
+        if(!is_numeric($phid)){
+            $ph = \App\Productionhouse::create(['name'=>$request->ph[0]]);
+            $phid = $ph->id;
+        }
+
         $pid = Program::find($id);
 
         $pid->update([
             'name' => $request->name,
             'description' => $request->description,
-            'productionhouse_id' => $request->ph[0],
+            'productionhouse_id' => $phid,
             'production_year' => $request->year,
             'website' => $request->website,
         ]);

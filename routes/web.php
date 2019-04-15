@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/', "HomeController@index");
+
 Route::prefix('admin')->group(function () {
 	Route::get('/', "Admin\LoginController@index")->name('loginadmin');
 	Route::get('home', "Admin\HomeController@index")->name('dashboard');
@@ -19,5 +21,7 @@ Route::prefix('admin')->group(function () {
 	Route::resource('actor', 'Admin\ActorController')->except(['show']);
 	Route::resource('channel', 'Admin\ChannelController')->except(['show']);
 	Route::resource('ph', 'Admin\ProductionhouseController')->except(['show']);
-	Route::resource('program', 'Admin\ProgramController');
+	Route::resource('program', 'Admin\ProgramController')->except(['show']);
+	Route::resource('jadwal', 'Admin\ScheduleController')->except(['show']);
+	Route::post('jadwal/filter','Admin\ScheduleController@filter')->name('jadwal.filter');
 });

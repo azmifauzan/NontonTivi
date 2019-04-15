@@ -31,6 +31,12 @@
           Programs @if($title == "Programs")<span class="sr-only">(current)</span>@endif
         </a>
       </li>
+       <li class="nav-item">
+        <a class="nav-link @if($title == 'Schedules') active @endif" href="{{ route('jadwal.index') }}">
+          <span data-feather="server"></span>
+          Schedules @if($title == "Schedules")<span class="sr-only">(current)</span>@endif
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="users"></span>

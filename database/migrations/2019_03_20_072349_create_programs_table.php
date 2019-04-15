@@ -15,10 +15,10 @@ class CreateProgramsTable extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('productionhouse_id');
+            $table->bigInteger('productionhouse_id')->nullable();
             $table->string('name');
-            $table->text('description');
-            $table->string('production_year',4);
+            $table->text('description')->nullable();
+            $table->string('production_year',4)->nullable();
             $table->string('website')->nullable();
             $table->timestamps();
         });

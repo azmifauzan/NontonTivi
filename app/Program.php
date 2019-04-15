@@ -12,4 +12,9 @@ class Program extends Model
     {
     	return $this->belongsToMany(\App\Actor::class);
     }
+
+    public function schedule()
+    {
+        return $this->hasMany('App\Schedule');
+    }
 }
